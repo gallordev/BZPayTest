@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="@dimen/screen_padding"
-    tools:context=".ui.auth.login.LoginFragment">
+    tools:context=".ui.auth.sign_up.SignUpFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField_email"
@@ -41,6 +41,22 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField_confirm_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_16dp"
+        android:hint="@string/hint_confirm_password"
+        app:endIconMode="password_toggle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -49,17 +65,9 @@
         app:dividerInsetStart="@dimen/insets_16dp" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_login" />
-
-    <Button
-        android:id="@+id/btn_sign_up"
-        style="@style/Widget.Material3.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
         android:text="@string/btn_sign_up" />
 
 </LinearLayout>

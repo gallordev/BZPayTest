@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "56280070664",
+    "project_id": "bzpaytest",
+    "storage_bucket": "bzpaytest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:56280070664:android:39c21250a79bf45c512fbd",
+        "android_client_info": {
+          "package_name": "com.gallordev.myapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdi1-NJrszkf-Ow0re5hfPGunWbvB7luw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
