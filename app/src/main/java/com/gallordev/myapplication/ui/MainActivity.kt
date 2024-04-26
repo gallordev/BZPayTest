@@ -1,7 +1,8 @@
-package com.gallordev.myapplication
+package com.gallordev.myapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.gallordev.myapplication.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
