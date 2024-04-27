@@ -2,11 +2,14 @@ package com.gallordev.myapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -61,7 +64,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
         arguments: Bundle?
     ) {
         when(destination.id) {
-            R.id.studentFormFragment -> {
+            R.id.studentFormFragment, R.id.weatherFragment -> {
                 binding.fab.visibility = View.GONE
             }
             R.id.homeFragment -> {
@@ -72,6 +75,21 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
                 binding.fab.visibility = View.GONE
                 supportActionBar?.hide()
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_weather -> {
+                navController.navigate(R.id.weatherFragment)
+                false
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

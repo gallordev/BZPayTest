@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_studentFormFragment"
             app:destination="@id/studentFormFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
 
     </fragment>
 
@@ -40,10 +43,18 @@
         android:name="com.gallordev.myapplication.ui.student.StudentFormFragment"
         android:label="@string/title_student_form"
         tools:layout="@layout/fragment_student_form" >
+
         <argument
             android:name="studentId"
             app:argType="integer"
             android:defaultValue="-1" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/weatherFragment"
+        android:name="com.gallordev.myapplication.ui.weather.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/fragment_weather" />
 
 </navigation>

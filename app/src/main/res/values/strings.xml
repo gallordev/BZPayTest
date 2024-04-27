@@ -12,4 +12,11 @@
     <string name="title_student_list">Student List</string>
     <string name="title_student_form">Student Form</string>
     <string name="title_edit_student">Edit Student</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_show_weather">Show Weather</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="title_weather">Weather</string>
+    <string name="txt_location_weather">Please grant location permissions to get weather data</string>
+    <string name="btn_enable_location">Enable Location</string>
 </resources>

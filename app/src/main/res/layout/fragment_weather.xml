@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.gallordev.myapplication.model.Weather" />
+
+        <variable
+            name="weather"
+            type="Weather" />
+
+    </data>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:context=".ui.weather.WeatherFragment">
+
+            <LinearLayout
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:translationY="-16dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txt_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_4dp"
+                    android:gravity="center"
+                    android:text="@{weather.current.tempC + `°C`}"
+                    android:textAppearance="?attr/textAppearanceDisplayLarge" />
+
+                <TextView
+                    android:id="@+id/txt_name_region"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_4dp"
+                    android:gravity="center"
+                    android:text="@{weather.location.name + `, ` + weather.location.region}"
+                    android:textAppearance="?attr/textAppearanceDisplaySmall" />
+
+                <TextView
+                    android:id="@+id/txt_country"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_4dp"
+                    android:gravity="center"
+                    android:text="@{weather.location.country}"
+                    android:textAppearance="?attr/textAppearanceDisplaySmall" />
+
+                <TextView
+                    android:id="@+id/txt_updated"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_4dp"
+                    android:gravity="center"
+                    android:text="@{`Last Updated: ` + weather.location.localTime}"
+                    android:textAppearance="?attr/textAppearanceTitleLarge" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_permission_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_4dp"
+                android:gravity="center"
+                android:text="@string/txt_location_weather"
+                android:textAppearance="?attr/textAppearanceDisplaySmall" />
+
+        </LinearLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</layout>
