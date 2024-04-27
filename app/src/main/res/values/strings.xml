@@ -7,4 +7,9 @@
     <string name="btn_sign_up">Register</string>
     <string name="btn_login">Login</string>
     <string name="btn_save">Save</string>
+    <string name="btn_update">Update</string>
+    <string name="hint_age">Age</string>
+    <string name="title_student_list">Student List</string>
+    <string name="title_student_form">Student Form</string>
+    <string name="title_edit_student">Edit Student</string>
 </resources>

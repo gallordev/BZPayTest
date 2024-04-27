@@ -8,20 +8,42 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.gallordev.myapplication.ui.home.HomeFragment"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="@string/title_student_list"
+        tools:layout="@layout/fragment_home" >
+
+        <action
+            android:id="@+id/action_homeFragment_to_studentFormFragment"
+            app:destination="@id/studentFormFragment" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.gallordev.myapplication.ui.auth.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
+
         <action
             android:id="@+id/action_loginFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.gallordev.myapplication.ui.auth.sign_up.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
+
+    <fragment
+        android:id="@+id/studentFormFragment"
+        android:name="com.gallordev.myapplication.ui.student.StudentFormFragment"
+        android:label="@string/title_student_form"
+        tools:layout="@layout/fragment_student_form" >
+        <argument
+            android:name="studentId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+
 </navigation>

@@ -2,25 +2,38 @@ package com.gallordev.myapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.gallordev.myapplication.R
+import com.gallordev.myapplication.databinding.ActivityMainBinding
 import com.gallordev.myapplication.ui.auth.AuthStatusViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedListener {
 
-    private val authViewModel: AuthStatusViewModel by viewModels()
+    private val authStatusViewModel: AuthStatusViewModel by viewModels()
     private lateinit var navController: NavController
+    private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
-        authViewModel.currentUser.observe(this) { signedUser ->
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        authStatusViewModel.currentUser.observe(this) { signedUser ->
             signedUser?.let {
                 if (navController.currentDestination?.id != R.id.homeFragment) {
                     val startDestination = navController.graph.startDestinationId
@@ -31,5 +44,35 @@ class MainActivity : AppCompatActivity() {
                 }
             } ?: return@observe
         }
+        binding.fab.setOnClickListener { view ->
+            navController.navigate(R.id.studentFormFragment)
+        }
+        navController.addOnDestinationChangedListener(this)
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration)
+                || super.onSupportNavigateUp()
+    }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        when(destination.id) {
+            R.id.studentFormFragment -> {
+                binding.fab.visibility = View.GONE
+            }
+            R.id.homeFragment -> {
+                binding.fab.visibility = View.VISIBLE
+                supportActionBar?.show()
+            }
+            R.id.loginFragment, R.id.signUpFragment -> {
+                binding.fab.visibility = View.GONE
+                supportActionBar?.hide()
+            }
+        }
+    }
+
 }

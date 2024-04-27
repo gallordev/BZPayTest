@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.gallordev.myapplication.model.Student" />
+
+        <variable
+            name="student"
+            type="Student" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/student_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?android:colorBackground"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txt_student_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_4dp"
+                android:text="@{`Name: ` + student.name}"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+            <TextView
+                android:id="@+id/txt_student_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_4dp"
+                android:text="@{`Age: ` + student.age}"
+                android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bg_row"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:background="@color/row_bg_color"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/student_info"
+            app:layout_constraintStart_toEndOf="@+id/student_info"
+            app:layout_constraintTop_toTopOf="@id/student_info">
+
+            <Button
+                android:id="@+id/btn_edit"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@android:drawable/ic_menu_edit" />
+
+            <Button
+                android:id="@+id/btn_delete"
+                style="?attr/materialIconButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@android:drawable/ic_menu_delete" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

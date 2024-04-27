@@ -31,9 +31,20 @@ abstract class BaseFragment<VB : ViewBinding>(
         _binding = null
     }
 
-    fun showErrorMessage(errorMessage: String?) {
+    fun showErrorMessage(errorMessage: String?, callback: (() -> Unit)? = null) {
         val unknownError = "Unknown error"
-        Snackbar.make(binding.root, "Error: ${errorMessage ?: unknownError}", Snackbar.LENGTH_SHORT).show()
+        Snackbar.make(
+            binding.root,
+            "Error: ${errorMessage ?: unknownError}",
+            Snackbar.LENGTH_SHORT
+        ).apply {
+            addCallback(object : Snackbar.Callback() {
+                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                    super.onDismissed(transientBottomBar, event)
+                    callback?.invoke()
+                }
+            })
+        }.show()
     }
 
 }
