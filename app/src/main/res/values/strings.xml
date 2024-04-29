@@ -19,4 +19,7 @@
     <string name="title_weather">Weather</string>
     <string name="txt_location_weather">Please grant location permissions to get weather data</string>
     <string name="btn_enable_location">Enable Location</string>
+    <string name="title_login">Login</string>
+    <string name="title_sign_up">Sign Up</string>
+    <string name="hint_add_student">Press the + button to add students info</string>
 </resources>

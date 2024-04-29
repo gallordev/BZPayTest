@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.gallordev.myapplication.repository.AuthRepository
+import com.gallordev.myapplication.utils.Extensions.isValidEmail
 import com.gallordev.myapplication.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,11 +21,20 @@ class LoginViewModel @Inject constructor(
         get() = _resource
 
     fun login(email: String, password: String) {
+        if (!validateCredentials(email, password)) return
         viewModelScope.launch {
             authRepository.signIn(email, password).collect {
                 _resource.postValue(it)
             }
         }
+    }
+
+    private fun validateCredentials(email: String, password: String): Boolean {
+        if (!email.isValidEmail() || password.isEmpty()) {
+            _resource.value = Resource.Error("Pleas provide valid credentials")
+            return false
+        }
+        return true
     }
 
 }

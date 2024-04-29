@@ -7,6 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.gallordev.myapplication.R
 import com.gallordev.myapplication.databinding.FragmentSignUpBinding
 import com.gallordev.myapplication.utils.BaseFragment
+import com.gallordev.myapplication.utils.Extensions.getText
 import com.gallordev.myapplication.utils.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,8 +37,9 @@ class SignUpFragment : BaseFragment<FragmentSignUpBinding>(FragmentSignUpBinding
         with(binding) {
             btnSignUp.setOnClickListener {
                 viewModel.signUp(
-                    textFieldEmail.editText!!.text.toString(),
-                    textFieldPassword.editText!!.text.toString()
+                    textFieldEmail.getText(),
+                    textFieldPassword.getText(),
+                    textFieldConfirmPassword.getText()
                 )
             }
         }

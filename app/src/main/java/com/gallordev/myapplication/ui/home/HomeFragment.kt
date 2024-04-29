@@ -2,7 +2,6 @@ package com.gallordev.myapplication.ui.home
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -53,8 +52,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
         homeViewModel.students.observe(viewLifecycleOwner) {
             val students = it ?: return@observe
+            binding.txtHint.visibility = if (students.isNotEmpty()) View.GONE else View.VISIBLE
             studentAdapter.submitList(students)
-            setItemTouchHelper(requireContext(), binding.recyclerView, studentAdapter.currentList.size)
+            setItemTouchHelper(
+                requireContext(),
+                binding.recyclerView,
+                studentAdapter.currentList.size
+            )
         }
 
     }

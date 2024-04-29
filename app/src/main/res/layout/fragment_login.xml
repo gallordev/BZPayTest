@@ -9,6 +9,14 @@
     android:padding="@dimen/screen_padding"
     tools:context=".ui.auth.login.LoginFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_4dp"
+        android:gravity="center"
+        android:text="@string/title_login"
+        android:textAppearance="?attr/textAppearanceDisplayMedium" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textField_email"
         android:layout_width="match_parent"
